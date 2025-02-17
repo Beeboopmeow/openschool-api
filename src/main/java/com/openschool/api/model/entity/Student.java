@@ -31,14 +31,10 @@ public class Student {
     @Embedded
     private Address address;
 
-    @ManyToMany(mappedBy = "students")
-    private List<Subject> subjects;
-
     public Student(@Valid StudentRequestDTO studentData) {
         this.name = studentData.name();
         this.birthdate = studentData.birthdate();
         this.email = studentData.email();
         this.address = new Address(studentData.address());
-        this.subjects = studentData.subjects();
     }
 }
