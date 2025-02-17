@@ -1,7 +1,4 @@
 package com.openschool.api.model.dtos.request;
-
-import com.openschool.api.model.Address;
-import com.openschool.api.model.entity.Subject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -9,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.List;
 
 public record StudentRequestDTO(
         @NotBlank(message = "O nome é obrigatório")
@@ -28,11 +24,7 @@ public record StudentRequestDTO(
 
         @NotNull(message = "O endereço é obrigatório")
         @Valid
-        AddressRequestDTO address,
-
-        @NotNull(message = "A lista de disciplinas é obrigatória")
-        @Schema(description = "Lista de disciplinas do estudante")
-        List<Subject> subjects
+        AddressRequestDTO address
 
 ) {
 }

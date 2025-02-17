@@ -2,12 +2,9 @@ package com.openschool.api.model.dtos.response;
 
 import com.openschool.api.model.Address;
 import com.openschool.api.model.entity.Student;
-import com.openschool.api.model.entity.Subject;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Schema(name = "student response dto", description = "dto de resposta para estudante")
 public record StudentResponseDTO(
@@ -25,12 +22,9 @@ public record StudentResponseDTO(
         String email,
 
         @Schema(description = "endereço do estudante")
-        Address address,
-
-        @Schema(description = "lista de disciplinas do estudante")
-        List<Subject> subjects
+        Address address
 ) {
         public StudentResponseDTO(Student student) {
-                this(student.getId(), student.getName(), student.getBirthdate(), student.getEmail(), student.getAddress(), student.getSubjects());
+                this(student.getId(), student.getName(), student.getBirthdate(), student.getEmail(), student.getAddress());
         }
 }
