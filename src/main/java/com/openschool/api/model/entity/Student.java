@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class Student {
 
     private String name;
 
-    private LocalDateTime birthdate;
+    private LocalDate birthdate;
 
     private String email;
 

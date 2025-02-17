@@ -5,6 +5,7 @@ import com.openschool.api.model.entity.Student;
 import com.openschool.api.model.entity.Subject;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,8 +18,8 @@ public record StudentResponseDTO(
         @Schema(description = "nome do estudante", example = "João")
         String name,
 
-        @Schema(description = "data de nascimento do estudante", example = "2000-01-01T00:00")
-        LocalDateTime birthdate,
+        @Schema(description = "data de nascimento do estudante", example = "2000-01-01")
+        LocalDate birthdate,
 
         @Schema(description = "email do estudante", example = "estudante@email.com")
         String email,
