@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Pattern;
 
 public record AddressRequestDTO(
         @NotBlank(message = "código postal é obrigatório")
-        @Pattern(regexp = "\\d{5}-\\d{3}|\\d{8}", message = "Código postal inválido")
+        @Pattern(regexp = "\\d{5}-\\d{3}", message = "Código postal inválido")
         @Schema(description = "Código postal", example = "12345-678 ou 12345678")
         String zipCode,
 
