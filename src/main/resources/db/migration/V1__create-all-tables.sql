@@ -2,7 +2,7 @@ CREATE TABLE students
 (
     id           BIGINT PRIMARY KEY,
     name         VARCHAR(100) NOT NULL,
-    birthdate    TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    date         DATE NOT NULL,
     email        VARCHAR(100) NOT NULL UNIQUE,
     zip_code     VARCHAR(9) NOT NULL,
     state        VARCHAR(80) NOT NULL,
