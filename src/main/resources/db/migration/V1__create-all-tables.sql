@@ -1,9 +1,9 @@
 CREATE TABLE students
 (
-    id           BIGINT PRIMARY KEY,
+    id           SERIAL PRIMARY KEY,
     name         VARCHAR(100) NOT NULL,
     birthdate    DATE NOT NULL,
-    email        VARCHAR(100) NOT NULL UNIQUE,
+    email        VARCHAR(100) UNIQUE,
     zip_code     VARCHAR(9) NOT NULL,
     state        VARCHAR(80) NOT NULL,
     city         VARCHAR(50) NOT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE students
 
 CREATE TABLE subjects
 (
-    id   BIGINT PRIMARY KEY,
+    id   SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE teachers
 (
-    id           BIGINT PRIMARY KEY,
+    id           SERIAL PRIMARY KEY,
     name         VARCHAR(100) NOT NULL,
     email        VARCHAR(100) NOT NULL UNIQUE,
     cpf          VARCHAR(11) NOT NULL UNIQUE,
@@ -34,7 +34,7 @@ CREATE TABLE teachers
     CONSTRAINT fk_teachers_on_subject FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );
 
-CREATE TABLE enrollments
+CREATE TABLE students_subjects
 (
     student_id BIGINT NOT NULL,
     subject_id BIGINT NOT NULL,

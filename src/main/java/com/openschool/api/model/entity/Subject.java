@@ -23,7 +23,7 @@ public class Subject {
     private String name;
 
     @ManyToMany
-    @JoinTable(name = "enrollments",
+    @JoinTable(name = "students_subjects",
             joinColumns = @JoinColumn(name = "subject_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private List<Student> students;
