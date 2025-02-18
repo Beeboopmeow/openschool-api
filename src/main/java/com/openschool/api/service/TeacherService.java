@@ -1,5 +1,6 @@
 package com.openschool.api.service;
 
+import com.openschool.api.model.Address;
 import com.openschool.api.model.dtos.request.TeacherRequestDTO;
 import com.openschool.api.model.dtos.response.TeacherResponseDTO;
 import com.openschool.api.model.entity.Teacher;
@@ -35,6 +36,21 @@ public class TeacherService {
 
         var teacher = new Teacher(teacherData, subject);
         teacherRepository.save(teacher);
+        return ResponseEntity.ok(new TeacherResponseDTO(teacher));
+    }
+
+    public ResponseEntity<TeacherResponseDTO> updateTeacher(Long id, @Valid TeacherRequestDTO teacherData) {
+        var teacher = teacherRepository.getReferenceById(id);
+
+        teacher.setName(teacherData.name());
+        teacher.setEmail(teacherData.email());
+        teacher.setAddress(new Address(teacherData.address()));
+        teacher.setCpf(teacherData.cpf());
+        teacher.setSubject(subjectRepository.findById(teacherData.subjectId())
+                .orElseThrow(() -> new IllegalArgumentException("Subject not found with id " + teacherData.subjectId())));
+
+        teacherRepository.save(teacher);
+
         return ResponseEntity.ok(new TeacherResponseDTO(teacher));
     }
 }

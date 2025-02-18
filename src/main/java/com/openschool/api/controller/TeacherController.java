@@ -3,6 +3,7 @@ package com.openschool.api.controller;
 import com.openschool.api.model.dtos.request.TeacherRequestDTO;
 import com.openschool.api.model.dtos.response.TeacherResponseDTO;
 import com.openschool.api.service.TeacherService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,14 @@ public class TeacherController {
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity<TeacherResponseDTO> createTeacher(@Valid @RequestBody TeacherRequestDTO teacherRequestDTO) {
         return teacherService.createTeacher(teacherRequestDTO);
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<TeacherResponseDTO> updateTeacher(@PathVariable Long id, @Valid @RequestBody TeacherRequestDTO teacherRequestDTO) {
+        return teacherService.updateTeacher(id, teacherRequestDTO);
     }
 }
