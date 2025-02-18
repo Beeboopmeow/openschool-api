@@ -1,5 +1,6 @@
 package com.openschool.api.service;
 
+import com.openschool.api.model.Address;
 import com.openschool.api.model.dtos.request.StudentRequestDTO;
 import com.openschool.api.model.dtos.response.StudentResponseDTO;
 import com.openschool.api.model.entity.Student;
@@ -29,6 +30,19 @@ public class StudentService {
     public ResponseEntity<StudentResponseDTO> createStudent(@Valid StudentRequestDTO studentData) {
         var student = new Student(studentData);
         studentRepository.save(student);
+        return ResponseEntity.ok(new StudentResponseDTO(student));
+    }
+
+    public ResponseEntity<StudentResponseDTO> updateStudent(Long id, @Valid StudentRequestDTO studentRequestDTO) {
+        var student = studentRepository.getReferenceById(id);
+
+        student.setName(studentRequestDTO.name());
+        student.setBirthdate(studentRequestDTO.birthdate());
+        student.setEmail(studentRequestDTO.email());
+        student.setAddress(new Address(studentRequestDTO.address()));
+
+        studentRepository.save(student);
+
         return ResponseEntity.ok(new StudentResponseDTO(student));
     }
 }

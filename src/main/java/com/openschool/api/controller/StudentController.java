@@ -33,4 +33,10 @@ public class StudentController {
     public ResponseEntity<StudentResponseDTO> createStudent(@Valid @RequestBody StudentRequestDTO studentRequestDTO) {
         return studentService.createStudent(studentRequestDTO);
     }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity<StudentResponseDTO> updateStudent(@PathVariable Long id, @Valid @RequestBody StudentRequestDTO studentRequestDTO) {
+        return studentService.updateStudent(id, studentRequestDTO);
+    }
 }
