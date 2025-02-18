@@ -29,6 +29,5 @@ public record StudentRequestDTO(
         @NotNull(message = "As disciplinas são obrigatórias")
         @Schema(description = "Ids das disciplinas", example = "[1, 2, 3]")
         List<Long> subjectIds
-
 ) {
 }
