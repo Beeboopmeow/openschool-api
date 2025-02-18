@@ -18,13 +18,13 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
-    public ResponseEntity<Page<StudentResponseDTO>> getStudents(Pageable pageable) {
-        return ResponseEntity.ok(studentRepository.findAll(pageable).map(StudentResponseDTO::new));
-    }
-
     public ResponseEntity<StudentResponseDTO> getStudentById(Long id) {
         var student = studentRepository.getReferenceById(id);
         return ResponseEntity.ok(new StudentResponseDTO(student));
+    }
+
+    public ResponseEntity<Page<StudentResponseDTO>> getStudents(Pageable pageable) {
+        return ResponseEntity.ok(studentRepository.findAll(pageable).map(StudentResponseDTO::new));
     }
 
     public ResponseEntity<StudentResponseDTO> createStudent(@Valid StudentRequestDTO studentData) {
