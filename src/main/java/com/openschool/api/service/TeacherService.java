@@ -1,7 +1,11 @@
 package com.openschool.api.service;
 
+import com.openschool.api.model.dtos.request.TeacherRequestDTO;
 import com.openschool.api.model.dtos.response.TeacherResponseDTO;
+import com.openschool.api.model.entity.Teacher;
+import com.openschool.api.model.repository.SubjectRepository;
 import com.openschool.api.model.repository.TeacherRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +18,8 @@ public class TeacherService {
 
     private final TeacherRepository teacherRepository;
 
+    private final SubjectRepository subjectRepository;
+
     public ResponseEntity<TeacherResponseDTO> getTeacherById(Long id) {
         var teacher = teacherRepository.getReferenceById(id);
         return ResponseEntity.ok(new TeacherResponseDTO(teacher));
@@ -21,5 +27,14 @@ public class TeacherService {
 
     public ResponseEntity<Page<TeacherResponseDTO>> getTeachers(Pageable pageable) {
         return ResponseEntity.ok(teacherRepository.findAll(pageable).map(TeacherResponseDTO::new));
+    }
+
+    public ResponseEntity<TeacherResponseDTO> createTeacher(@Valid TeacherRequestDTO teacherData) {
+        var subject =  subjectRepository.findById(teacherData.subjectId())
+                .orElseThrow(() -> new IllegalArgumentException("Subject not found with id " + teacherData.subjectId()));
+
+        var teacher = new Teacher(teacherData, subject);
+        teacherRepository.save(teacher);
+        return ResponseEntity.ok(new TeacherResponseDTO(teacher));
     }
 }

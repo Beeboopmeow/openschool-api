@@ -1,16 +1,15 @@
 package com.openschool.api.controller;
 
+import com.openschool.api.model.dtos.request.TeacherRequestDTO;
 import com.openschool.api.model.dtos.response.TeacherResponseDTO;
 import com.openschool.api.service.TeacherService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -27,5 +26,10 @@ public class TeacherController {
     @GetMapping
     public ResponseEntity<Page<TeacherResponseDTO>> getTeachers(@PageableDefault(size = 10) Pageable pageable) {
         return teacherService.getTeachers(pageable);
+    }
+
+    @PostMapping
+    public ResponseEntity<TeacherResponseDTO> createTeacher(@Valid @RequestBody TeacherRequestDTO teacherRequestDTO) {
+        return teacherService.createTeacher(teacherRequestDTO);
     }
 }
