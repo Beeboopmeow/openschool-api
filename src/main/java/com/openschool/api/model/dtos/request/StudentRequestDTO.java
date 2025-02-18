@@ -17,7 +17,6 @@ public record StudentRequestDTO(
         @Schema(description = "Data de nascimento do estudante", example = "2000-01-01")
         LocalDate birthdate,
 
-        @NotBlank(message = "O email é obrigatório")
         @Email(message = "O email tem que ser válido")
         @Schema(description = "Email do estudante", example = "estudante@email.com")
         String email,
