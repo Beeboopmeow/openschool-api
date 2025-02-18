@@ -33,17 +33,17 @@ public class Student {
     @Embedded
     private Address address;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "students_subjects",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id"))
     private List<Subject> subjects;
 
-    public Student(@Valid StudentRequestDTO studentData) {
+    public Student(@Valid StudentRequestDTO studentData, List<Subject> subjects) {
         this.name = studentData.name();
         this.birthdate = studentData.birthdate();
         this.email = studentData.email();
         this.address = new Address(studentData.address());
-        this.subjects = studentData.subjects();
+        this.subjects = subjects;
     }
 }

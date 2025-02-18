@@ -1,5 +1,4 @@
 package com.openschool.api.model.dtos.request;
-import com.openschool.api.model.entity.Subject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -28,7 +27,8 @@ public record StudentRequestDTO(
         AddressRequestDTO address,
 
         @NotNull(message = "As disciplinas são obrigatórias")
-        List<Subject> subjects
+        @Schema(description = "Ids das disciplinas", example = "[1, 2, 3]")
+        List<Long> subjectIds
 
 ) {
 }
