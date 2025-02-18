@@ -40,4 +40,12 @@ public class SubjectService {
         subjectRepository.save(subject);
         return ResponseEntity.ok(new SubjectResponseDTO(subject));
     }
+
+    public ResponseEntity<Void> deleteSubject(Long id) {
+        if (!subjectRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        subjectRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

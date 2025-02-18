@@ -37,4 +37,9 @@ public class SubjectController {
     public ResponseEntity<SubjectResponseDTO> updateSubject(@PathVariable Long id, @Valid @RequestBody SubjectRequestDTO subjectRequestDTO) {
         return subjectService.updateSubject(id, subjectRequestDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSubject(@PathVariable Long id) {
+        return subjectService.deleteSubject(id);
+    }
 }
