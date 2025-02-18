@@ -53,4 +53,12 @@ public class TeacherService {
 
         return ResponseEntity.ok(new TeacherResponseDTO(teacher));
     }
+
+    public ResponseEntity<Void> deleteTeacher(Long id) {
+        if (!teacherRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        teacherRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
