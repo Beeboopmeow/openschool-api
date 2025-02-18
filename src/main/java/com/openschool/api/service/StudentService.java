@@ -45,4 +45,13 @@ public class StudentService {
 
         return ResponseEntity.ok(new StudentResponseDTO(student));
     }
+
+    public ResponseEntity<Void> deleteStudent(Long id) {
+        if (!studentRepository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        studentRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+
+    }
 }

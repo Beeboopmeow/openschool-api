@@ -39,4 +39,10 @@ public class StudentController {
     public ResponseEntity<StudentResponseDTO> updateStudent(@PathVariable Long id, @Valid @RequestBody StudentRequestDTO studentRequestDTO) {
         return studentService.updateStudent(id, studentRequestDTO);
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
+        return studentService.deleteStudent(id);
+    }
 }
