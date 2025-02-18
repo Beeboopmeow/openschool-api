@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -47,14 +48,21 @@ public class StudentService {
 
     public ResponseEntity<StudentResponseDTO> updateStudent(Long id, @Valid StudentRequestDTO studentData) {
         var student = studentRepository.getReferenceById(id);
+        List<Subject> subjects = new ArrayList<>(studentData.subjectIds().stream()
+                .map(subjectId -> subjectRepository.findById(subjectId)
+                        .orElseThrow(() -> new EntityNotFoundException("Subject not found with id " + subjectId)))
+                .toList());
 
         student.setName(studentData.name());
         student.setBirthdate(studentData.birthdate());
         student.setEmail(studentData.email());
         student.setAddress(new Address(studentData.address()));
-        student.setSubjects(studentData.subjectIds().stream()
-                .map(subjectRepository::getReferenceById)
-                .toList());
+
+        if (!subjects.isEmpty()) {
+            student.setSubjects(subjects);
+        } else {
+            throw new IllegalArgumentException("Student must have at least one subject");
+        }
 
         studentRepository.save(student);
 

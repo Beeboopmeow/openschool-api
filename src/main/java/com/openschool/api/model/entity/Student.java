@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -37,7 +38,7 @@ public class Student {
     @JoinTable(name = "students_subjects",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id"))
-    private List<Subject> subjects;
+    private List<Subject> subjects = new ArrayList<>();
 
     public Student(@Valid StudentRequestDTO studentData, List<Subject> subjects) {
         this.name = studentData.name();
