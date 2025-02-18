@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,10 +33,17 @@ public class Student {
     @Embedded
     private Address address;
 
+    @ManyToMany
+    @JoinTable(name = "students_subjects",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id"))
+    private List<Subject> subjects;
+
     public Student(@Valid StudentRequestDTO studentData) {
         this.name = studentData.name();
         this.birthdate = studentData.birthdate();
         this.email = studentData.email();
         this.address = new Address(studentData.address());
+        this.subjects = studentData.subjects();
     }
 }

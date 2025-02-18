@@ -1,12 +1,12 @@
 package com.openschool.api.model.entity;
 
+import com.openschool.api.model.dtos.request.SubjectRequestDTO;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,9 +22,7 @@ public class Subject {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "students_subjects",
-            joinColumns = @JoinColumn(name = "subject_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> students;
+    public Subject(@Valid SubjectRequestDTO subjectData) {
+        this.name = subjectData.name();
+    }
 }
