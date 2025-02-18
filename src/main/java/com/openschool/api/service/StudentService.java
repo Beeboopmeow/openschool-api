@@ -33,13 +33,13 @@ public class StudentService {
         return ResponseEntity.ok(new StudentResponseDTO(student));
     }
 
-    public ResponseEntity<StudentResponseDTO> updateStudent(Long id, @Valid StudentRequestDTO studentRequestDTO) {
+    public ResponseEntity<StudentResponseDTO> updateStudent(Long id, @Valid StudentRequestDTO studentData) {
         var student = studentRepository.getReferenceById(id);
 
-        student.setName(studentRequestDTO.name());
-        student.setBirthdate(studentRequestDTO.birthdate());
-        student.setEmail(studentRequestDTO.email());
-        student.setAddress(new Address(studentRequestDTO.address()));
+        student.setName(studentData.name());
+        student.setBirthdate(studentData.birthdate());
+        student.setEmail(studentData.email());
+        student.setAddress(new Address(studentData.address()));
 
         studentRepository.save(student);
 
