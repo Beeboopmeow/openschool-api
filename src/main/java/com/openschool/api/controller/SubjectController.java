@@ -32,4 +32,9 @@ public class SubjectController {
     public ResponseEntity<SubjectResponseDTO> createSubject(@Valid @RequestBody SubjectRequestDTO subjectRequestDTO) {
         return subjectService.createSubject(subjectRequestDTO);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<SubjectResponseDTO> updateSubject(@PathVariable Long id, @Valid @RequestBody SubjectRequestDTO subjectRequestDTO) {
+        return subjectService.updateSubject(id, subjectRequestDTO);
+    }
 }

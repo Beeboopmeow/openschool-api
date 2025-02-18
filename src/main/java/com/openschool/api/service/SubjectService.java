@@ -31,4 +31,13 @@ public class SubjectService {
         subjectRepository.save(subject);
         return ResponseEntity.ok(new SubjectResponseDTO(subject));
     }
+
+    public ResponseEntity<SubjectResponseDTO> updateSubject(Long id, @Valid SubjectRequestDTO subjectData) {
+        var subject = subjectRepository.getReferenceById(id);
+
+        subject.setName(subjectData.name());
+
+        subjectRepository.save(subject);
+        return ResponseEntity.ok(new SubjectResponseDTO(subject));
+    }
 }
