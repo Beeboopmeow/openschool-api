@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Tag(name = "student controller")
+@Tag(name = "student controller", description = "controlador de estudantes")
 public interface StudentControllerDoc {
 
     @Operation(summary = "buscar estudante por id", description = "retorna um estudante pelo id informado no parâmetro")

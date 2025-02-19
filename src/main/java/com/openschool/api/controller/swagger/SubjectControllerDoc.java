@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@Tag(name = "subject controller", description = "Controlador de disciplinas")
+@Tag(name = "subject controller", description = "controlador de disciplinas")
 public interface SubjectControllerDoc {
     @Operation(summary = "buscar disciplina por id", description = "retorna uma disciplina pelo id informado no parâmetro")
     @ApiResponse(responseCode = "200", description = "disciplina encontrada com sucesso")
