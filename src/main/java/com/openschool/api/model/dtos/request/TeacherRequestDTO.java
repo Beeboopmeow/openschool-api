@@ -1,7 +1,5 @@
 package com.openschool.api.model.dtos.request;
 
-import com.openschool.api.model.Address;
-import com.openschool.api.model.entity.Teacher;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+@Schema(name = "teacher request dto", description = "dto de requisição para professor")
 public record TeacherRequestDTO(
         @NotBlank(message = "Nome do professor é obrigatório")
         @Size(max=100, message = "Nome do professor deve ter no máximo 100 caracteres")

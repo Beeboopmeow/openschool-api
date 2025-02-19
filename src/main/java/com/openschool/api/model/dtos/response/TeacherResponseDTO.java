@@ -5,6 +5,7 @@ import com.openschool.api.model.entity.Subject;
 import com.openschool.api.model.entity.Teacher;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(name = "teacher response dto", description = "dto de resposta para professor")
 public record TeacherResponseDTO(
         @Schema(description = "id do professor", example = "1")
         Long id,

@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
+@Schema(name = "student request dto", description = "dto de requisição para estudante")
 public record StudentRequestDTO(
         @NotBlank(message = "O nome é obrigatório")
         @Size(max=100, message = "O nome deve ter no máximo 100 caracteres")

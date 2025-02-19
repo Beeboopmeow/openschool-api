@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+@Schema(name = "address request dto", description = "dto de requisição para endereço")
 public record AddressRequestDTO(
         @NotBlank(message = "código postal é obrigatório")
         @Pattern(regexp = "\\d{5}-\\d{3}", message = "Código postal inválido")
