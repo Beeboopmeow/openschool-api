@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class SubjectService {
     public ResponseEntity<SubjectResponseDTO> createSubject(@Valid SubjectRequestDTO subjectData) {
         var subject = new Subject(subjectData);
         subjectRepository.save(subject);
-        return ResponseEntity.ok(new SubjectResponseDTO(subject));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new SubjectResponseDTO(subject));
     }
 
     public ResponseEntity<SubjectResponseDTO> updateSubject(Long id, @Valid SubjectRequestDTO subjectData) {

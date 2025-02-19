@@ -12,6 +12,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,7 @@ public class StudentService {
 
         var student = new Student(studentData, subjects);
         studentRepository.save(student);
-        return ResponseEntity.ok(new StudentResponseDTO(student));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new StudentResponseDTO(student));
     }
 
     public ResponseEntity<StudentResponseDTO> updateStudent(Long id, @Valid StudentRequestDTO studentData) {
