@@ -1,5 +1,6 @@
 package com.openschool.api.controller;
 
+import com.openschool.api.controller.swagger.SubjectControllerDoc;
 import com.openschool.api.model.dtos.request.SubjectRequestDTO;
 import com.openschool.api.model.dtos.response.SubjectResponseDTO;
 import com.openschool.api.service.SubjectService;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/subjects")
-public class SubjectController {
+public class SubjectController implements SubjectControllerDoc {
 
     private final SubjectService subjectService;
 
