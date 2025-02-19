@@ -1,5 +1,6 @@
 package com.openschool.api.controller;
 
+import com.openschool.api.controller.swagger.TeacherControllerDoc;
 import com.openschool.api.model.dtos.request.TeacherRequestDTO;
 import com.openschool.api.model.dtos.response.TeacherResponseDTO;
 import com.openschool.api.service.TeacherService;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/teachers")
-public class TeacherController {
+public class TeacherController implements TeacherControllerDoc {
 
     private final TeacherService teacherService;
 
