@@ -34,6 +34,13 @@ CREATE TABLE teachers
     CONSTRAINT fk_teachers_on_subject FOREIGN KEY (subject_id) REFERENCES subjects (id)
 );
 
+CREATE TABLE users
+(
+    id       SERIAL PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE students_subjects
 (
     student_id BIGINT NOT NULL,
