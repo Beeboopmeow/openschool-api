@@ -51,4 +51,6 @@ A documentação completa da API está disponível [aqui](http://localhost:8080/
 
 A aplicação estará disponível em `http://localhost:8080`.
 
+<br>
 
+<img width="100%" src="assets/readmedecor.gif">
