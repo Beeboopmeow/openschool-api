@@ -9,13 +9,31 @@ OpenSchool API é um serviço web RESTful construído com Spring Boot para geren
 - [Instalação](#instalação)
 - [Documentação da API](#documentação)
 
-## Endpoints
+## Documentação
 
-..
+<details>
+  <summary><b>Endpoints</b></summary>
+  <img src="./assets/doc1.png">
+  <img src="./assets/doc2.png">
+</details>
+<details>
+  <summary><b>Autenticação</b></summary>
+  <img src="./assets/doc3.png">
+</details>
+<br>
+A documentação completa da API está disponível [aqui](http://localhost:8080/swagger-ui.html) quando a aplicação estiver em execução.
 
 ## Tecnologias
 
-..
+- Java
+- Spring Boot
+- PostgreSQL
+- Maven
+- Flyway Migrations
+- Spring Security
+- Swagger (Spring Doc)
+- JWT
+- Lombok
 
 ## Instalação
 
@@ -33,6 +51,4 @@ OpenSchool API é um serviço web RESTful construído com Spring Boot para geren
 
 A aplicação estará disponível em `http://localhost:8080`.
 
-## Documentação
 
-A documentação completa da API está disponível [aqui](http://localhost:8080/swagger-ui.html) quando a aplicação estiver em execução.
