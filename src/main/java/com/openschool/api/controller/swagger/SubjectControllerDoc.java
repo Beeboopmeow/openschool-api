@@ -5,6 +5,7 @@ import com.openschool.api.model.dtos.response.SubjectResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Tag(name = "subject controller", description = "controlador de disciplinas")
+@SecurityRequirement(name = "bearer-key")
 public interface SubjectControllerDoc {
     @Operation(summary = "buscar disciplina por id", description = "retorna uma disciplina pelo id informado no parâmetro")
     @ApiResponse(responseCode = "200", description = "disciplina encontrada com sucesso")

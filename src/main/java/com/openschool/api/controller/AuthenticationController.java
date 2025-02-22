@@ -1,5 +1,6 @@
 package com.openschool.api.controller;
 
+import com.openschool.api.controller.swagger.AuthenticationControllerDoc;
 import com.openschool.api.infra.security.TokenService;
 import com.openschool.api.model.dtos.request.AuthenticationRequestDTO;
 import com.openschool.api.model.dtos.response.AuthenticationResponseDTO;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/login")
-public class AuthenticationController {
+public class AuthenticationController implements AuthenticationControllerDoc {
 
     private final AuthenticationManager authenticationManager;
 

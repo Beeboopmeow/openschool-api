@@ -5,6 +5,7 @@ import com.openschool.api.model.dtos.response.TeacherResponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Tag(name = "teacher controller", description = "controlador de professores")
+@SecurityRequirement(name = "bearer-key")
 public interface TeacherControllerDoc {
     @Operation(summary = "buscar professor por id", description = "retorna um professor pelo id informado no parâmetro")
     @ApiResponse(responseCode = "200", description = "professor encontrado com sucesso")
