@@ -32,6 +32,7 @@ A documentação local completa da API está disponível [aqui](http://localhost
 - Maven
 - Flyway Migrations
 - Spring Security
+- Spring Validation
 - Swagger (Spring Doc)
 - JWT
 - Lombok
